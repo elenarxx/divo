@@ -1,0 +1,30 @@
+*************PARAMETERS FOR VOIDS.F90**********
+is masclet simulation (.True.) or not (.False.) ?---------------->
+.False.
+filename for Nbody simulation (used only if FLAG_MASCLET=.False.) ---------------->
+"link2reconstructed128_alpha1.4beta3.5"
+do you want the map file to be written ? ---------------->
+.True.
+files: first, last, every (Masclet only) ----------------> 
+32,32,50
+min and max levels of the hierarchies to be used by voidfind   --------------->
+0, 0
+Hubble constant , h, omega matter -------->
+0.673,0.315
+initial redshift, box size --------------->
+100.0, 100 #Mpc/h
+density contrast threshold for centers ---------------
+-0.8
+density contrast threshold for the edges ------------------->
+1.e30
+density gradient threshold --------------->
+1e30 #0.25
+min fraction of volume  --------------->
+0.45
+max fraction of volume  --------------->
+0.6
+min radius of protovoid to be retained [in Mpc/h] ------------------>
+1.
+
+
+

@@ -1,0 +1,37 @@
+!*      iteraciones reales que leemos----------------------------------
+       INTEGER MAXITER
+       PARAMETER (MAXITER=1)
+
+!*      level 0 grid --------------------------------------------------- 
+       INTEGER  NHYX, NHYY, NHYZ                                  
+       PARAMETER (NHYX=128,NHYY=128,NHYZ=128)                             
+
+!*      level 0 particles ----------------------------------------------
+       INTEGER NDMXYZ
+       PARAMETER (NDMXYZ=2097152)
+
+!*      coarser grid
+       INTEGER NCOX,NCOY,NCOZ                                            
+       PARAMETER (NCOX=128,NCOY=128,NCOZ=128) 
+
+!*      refinements ----------------------------------------------------          
+       INTEGER NPALEV,NLEVELS                                          
+       PARAMETER (NPALEV=0,NLEVELS=0)                               
+       
+       INTEGER NMAX,NMAY,NMAZ
+       PARAMETER (NMAX=128,NMAY=128,NMAZ=128)
+
+!*      dm particles in refinements ------------------------------------
+       INTEGER PARTIRED
+       PARAMETER (PARTIRED=53000000)
+       
+!*     max number of voids ------------------------------------
+       INTEGER NVOID_MAX
+       PARAMETER (NVOID_MAX=3000000)
+
+!*      void "particles"  -----------------------------------------
+!*       INTEGER NMAXPS
+!*       PARAMETER (NMAXPS=256*256*256) 
+
+!*     min volume of the protovoids -------------------------------
+       REAL*4, PARAMETER:: VMIN=10. !10.
