@@ -2,7 +2,7 @@
 is masclet simulation (.True.) or not (.False.) ?---------------->
 .False.
 filename for Nbody simulation (used only if FLAG_MASCLET=.False.) ---------------->
-"link2reconstructed128_alpha1.4beta3.5"
+"./link2simulated128_alpha1.4beta3.5"
 do you want the map file to be written ? ---------------->
 .True.
 files: first, last, every (Masclet only) ----------------> 

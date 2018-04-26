@@ -288,7 +288,6 @@ END MODULE COMMONDATA
        READ(1,*) RMIN
        CLOSE(1)
 
-       write(*,*) 'NBODYFILE:', NBODYFILE
        NX = NCOX
        NY = NCOY
        NZ = NCOZ 
@@ -432,7 +431,7 @@ END MODULE COMMONDATA
        ITER=FIRST+EVERY*(IFI-1)
 
        WRITE(*,*) '************************************************'
-       WRITE(*,*) 'Reading iteration', ITER
+       !WRITE(*,*) 'Reading iteration', ITER
        CALL CPU_TIME(TIME_1)
        !WRITE(*,*) 'Time before reading:', TIME_1
 
@@ -1199,8 +1198,6 @@ END MODULE COMMONDATA
                 ENDDO
              ENDDO
           ENDDO
-          WRITE(*,*) 'FF WITH MARCAP:', COUNT(MARCAP .GT. 0), &
-               REAL(COUNT(MARCAP .GT. 0)/(NX2*NX2*NX2)), REAL(COUNT(MARCA .GT. 0)/(NXX*NXX*NXX))
 
           DXCO=DXX
           DYCO=DYY
@@ -1478,19 +1475,21 @@ END MODULE COMMONDATA
        INTEGER ITER
        CHARACTER(LEN=*) DIR, INPUT, FILNOMO, FILNOMO2, FILNOMO1, FILNOMO3, FILNOMO4, &
             FILNOMO5, FILNOMO6, FILNOMO7
+       CHARACTER(LEN=100):: INPUT_SHORT
        CHARACTER*5 NOM
-       INTEGER CONTA,I,N10,IT
+       INTEGER CONTA,I,N10,IT, startin
 
-      
+       STARTIN = SCAN(INPUT,'/', BACK=.TRUE.)
+       INPUT_SHORT=INPUT(STARTIN+1:)
 
-       FILNOMO=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_voids' !list of voids
-       FILNOMO1=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_map'
-       FILNOMO2=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_profiles'
-       FILNOMO3=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_profiles_ref'
-       FILNOMO4=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_subvoids' !list of subvoids
-       FILNOMO5=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_map_sub'
-       FILNOMO6=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_galaxies' !galaxies in walls
-       FILNOMO7=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT))//'_haloes'
+       FILNOMO=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_voids' !list of voids
+       FILNOMO1=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_map'
+       FILNOMO2=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_profiles'
+       FILNOMO3=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_profiles_ref'
+       FILNOMO4=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_subvoids' !list of subvoids
+       FILNOMO5=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_map_sub'
+       FILNOMO6=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_galaxies' !galaxies in walls
+       FILNOMO7=TRIM(ADJUSTL(DIR))//'/'//TRIM(ADJUSTL(INPUT_SHORT))//'_haloes'
 
        RETURN
      END SUBROUTINE NOMFILE_NBODY
@@ -2167,7 +2166,6 @@ END MODULE COMMONDATA
         !N3=1
        READ(31) (((U1SPH(I,J,K),K=1,N1),J=1,N2),I=1,N3)
        
-       write(*,*) 'USPH(100,100,100):',U1SPH(100,100,100),  U1SPH(101,101,101)
        WRITE(*,*) 'MIN/MAX density:', MINVAL(U1SPH), MAXVAL(U1SPH), U1SPH(16,16,16)
 
        IF(FLAG_VEL == 1 ) THEN
@@ -3212,10 +3210,10 @@ END MODULE COMMONDATA
        NY=REAL(NHYX)*(2.**IRR)
        NZ=REAL(NHYX)*(2.**IRR)
 
-       WRITE(*,*) 'MIN/MAX eulerian velocity:'
-       WRITE(*,*) 'vx: ',MINVAL(U2CO), MAXVAL(U2CO)
-       WRITE(*,*) 'vy: ',MINVAL(U3CO), MAXVAL(U3CO)
-       WRITE(*,*) 'vz: ', MINVAL(U4CO), MAXVAL(U4CO)
+       WRITE(*,*) '  MIN/MAX eulerian velocity:'
+       WRITE(*,*) '  vx: ',MINVAL(U2CO), MAXVAL(U2CO)
+       WRITE(*,*) '  vy: ',MINVAL(U3CO), MAXVAL(U3CO)
+       WRITE(*,*) '  vz: ', MINVAL(U4CO), MAXVAL(U4CO)
 !*-------------------------------------
 !*      Divergencia coarse (DIVERCO)
 !*-------------------------------------
